@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react'; // Besoin d'importer la librairie React pour utiliser du code JSX
 
+import Personne from './Personne';
+
+/*
 // Cette fonction app est un composant (on utilise des minuscules habituellement pour des fonctions)
 function app() {
     // Pour rappel, la fonction ne doit renvoyer qu'un SEUL élément JSX.
@@ -24,6 +27,10 @@ function app() {
         <Fragment>
             <h1>Hello World from App()</h1>
             <p>using Fragment System</p>
+
+            <Personne />
+            <Personne />
+            <Personne />
         </Fragment>
     );
     // NOTE : <Fragment></Fragment> peut être remplacé par <></> plus simplement (ce qui retire AUSSI la nécessité de l'import {Fragment}),
@@ -50,17 +57,25 @@ function app() {
 }
 
 export default app;
-/*
-* /
+*/
 
 // Pour définir un Component à partir d'une classe, cette dernière doit étendre React.Component, et obligatoirement
 // définir la méthode render() (qui return du code JSX)
-/*
 class App extends Component {
     render() {
-        return <h1>Hello World from class App</h1 >;
+        return (
+            <>
+                <h1>Hello World from Component App</h1>
+                <p>using Fragment System</p>
+
+                <Personne />
+                <Personne />
+                <Personne />
+            </>
+        );
     }
 }
 
 export default App;
+/*
 */
