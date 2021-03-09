@@ -3,6 +3,8 @@ import React, { Component, Fragment } from 'react'; // Besoin d'importer la libr
 import Personne_as_Function from './Personne';
 import Personne_as_Class from './Personne_as_Class';
 
+import Horloge from './Horloge';
+
 /*
 // Cette fonction app est un composant (on utilise des minuscules habituellement pour des fonctions)
 function app() {
@@ -73,6 +75,8 @@ class App extends Component {
                 <Personne_as_Function nom="Catherine" age="22" sexe="femme"/>
 
                 <Personne_as_Class nom="Leah" age="7" sexe="femme" />
+
+                <Horloge />
             </>
         );
     }
