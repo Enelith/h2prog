@@ -11,3 +11,5 @@ npm start
 # REACT 2020
 https://www.udemy.com/course/react-2020-par-la-pratique-de-a-a-z-evolution-progressive/
 
+# React favorise la GRANULARITE (mise en place d'un niveau de GRANULARITE important) pour permettre la réutilisation des composants en divers endroits 
+
