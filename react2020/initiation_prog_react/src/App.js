@@ -68,9 +68,9 @@ class App extends Component {
                 <h1>Hello World from Component App</h1>
                 <p>using Fragment System</p>
 
-                <Personne />
-                <Personne />
-                <Personne />
+                <Personne nom="Jonathan" age="37" sexe="homme"/>
+                <Personne nom="Catherine" age="22" sexe="femme"/>
+                <Personne nom="Leah" age="6" sexe="femme"/>
             </>
         );
     }
