@@ -83,7 +83,8 @@ class App extends Component {
         // On DOIT respecer l'immutabilité (https://fr.reactjs.org/tutorial/tutorial.html#why-immutability-is-important) : ne pas modifier les infos directement
 
         /*
-        const newPersonnes = this.state.personnesAsClass.slice();
+        // const newPersonnes = this.state.personnesAsClass; // IMPORTANT : WRONG ~ Copie de la référence de l'objet
+        const newPersonnes = this.state.personnesAsClass.slice(); // OK ~ Copie de l'objet
         // <=> const newPersonnes = [...this.state.personnesAsClass]; // Version ES6 ou ES7
 
         for (let i = 0; i < newPersonnes.length; i++) {
@@ -106,6 +107,24 @@ class App extends Component {
     }
 
     /*
+     * Note : Respect de l'immutabilité à tous les niveaux
+     */
+    birthdayHandler = (indicePersonne) => {
+        // Génère une copie de la personne sur laquelle on a cliqué (NOUVELLE personne)
+        const newPersonne = { ...this.state.personnesAsClass[indicePersonne] };
+        // Augmente l'âge de la personne copiée
+        newPersonne.age++;
+
+        // On duplique le tableau de personnes original (NOUVEAU tableau)
+        const newTabPersonnes = [...this.state.personnesAsClass];
+        // On remplace la personne à l'indice du tableau sur lequel on a cliqué par la NOUVELLE personne qu'on a créée
+        newTabPersonnes[indicePersonne] = newPersonne;
+
+        // On remplace dans le STATE le tableau de personnesAsClass par le NOUVEAU tableau 
+        this.setState({ personnesAsClass: newTabPersonnes });
+    }
+
+    /*
      * Pour envoyer toutes les props vers un component, utiliser {...this.state.xxx};
      * Pour n'envoyer que des propriétés bien spécifiques, il va falloir définir ces dernières manuellement (ex: nom={this.state.personnesAsFunction[0].nom})
      */
@@ -122,10 +141,10 @@ class App extends Component {
                     age={this.state.personnesAsFunction[0].age}
                     sexe={this.state.personnesAsFunction[0].sexe} />
 
-                <PersonneAsClass {...this.state.personnesAsClass[0]} />
-                <PersonneAsClass {...this.state.personnesAsClass[1]} />
+                <PersonneAsClass {...this.state.personnesAsClass[0]} birthdayHandler={this.birthdayHandler.bind(this, 0)}/>
+                <PersonneAsClass {...this.state.personnesAsClass[1]} birthdayHandler={() => this.birthdayHandler(1)}/>
 
-                <button onClick={this.anniversaireHandler}>Anniversaire</button>
+                <button onClick={this.anniversaireHandler}>Happy Birthday Everyone !</button>
 
                 <BaseButtons />
             </>

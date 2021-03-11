@@ -26,6 +26,7 @@ class BaseButtons extends Component {
         console.log(event.target);
     }
 
+    // Lorsqu'on utilise le .bind, le "this" represente la classe courante (ici BaseButton)
     render() {
         return (
             <>

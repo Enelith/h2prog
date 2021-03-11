@@ -44,6 +44,12 @@ class PersonneAsClass extends Component {
                     <div className={classes.monTitre + " " + classes.italic} style={cssDynamique} >
                         Sexe : {affichageSexe} (utilisation CSS dynamique via "style" ~ voir le code - WARNING : CamelCase required)
                     </div>
+                    <button
+                        className={classes.button}
+                        onClick={ this.props.birthdayHandler } >
+                        Happy birthday {this.props.nom} !
+                    </button>
+                    <div className="clear" />
                 </fieldset>
             </>    
         );
