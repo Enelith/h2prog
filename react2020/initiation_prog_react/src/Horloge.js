@@ -24,11 +24,23 @@ class Horloge extends Component {
     }
 
     componentDidMount() {
-        console.log("Composant monté"); // Rendu en 3rd
+        // console.log("Composant monté"); // Rendu en 3rd
+
+        this.timerID = setInterval(
+            () => {
+                this.setState({ date: new Date() });
+            },
+            1000
+        );
+    }
+
+    // Au moment de détruire/démonter le composant, on veut arrêter le Timer qui a été initialisé, on utilisera donc la méthode componentWillUnmount pour se faire
+    componentWillUnmount() {
+        clearInterval(this.timerID);
     }
 
     render() {
-        console.log("Composant affiché"); // Rendu en 2nd
+        // console.log("Composant affiché"); // Rendu en 2nd
         return (
             <>
                 <h2>Horloge : {this.state.date.toLocaleTimeString()}</h2>
