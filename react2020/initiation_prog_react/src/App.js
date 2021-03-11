@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react'; // Besoin d'importer la librairie React pour utiliser du code JSX
 
-import PersonneAsFunction from './Personne';
-import PersonneAsClass from './Personne_as_Class';
+import PersonneAsFunction from './components/Personne/Personne';
+import PersonneAsClass from './components/Personne/Personne_as_Class';
 
-import Horloge from './Horloge';
+import Horloge from './containers/Horloge/Horloge';
 
 /*
 // Cette fonction app est un composant (on utilise des minuscules habituellement pour des fonctions)

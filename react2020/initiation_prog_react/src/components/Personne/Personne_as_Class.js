@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AgePersonne from './AgePersonne';
+import AgePersonne from './AgePersonne/AgePersonne';
 
 class Personne_as_Class extends Component {
     // Deux manières de transmettre des informations à une classe (ancienne et nouvelle, depuis ES7)

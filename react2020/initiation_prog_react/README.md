@@ -76,3 +76,7 @@ Check : https://reactjs.org/docs/fragments.html (from 0.14.0 ~ October 7 2015 ?)
 
 ## ESX (ECMAScript X)
 Check : https://fr.wikipedia.org/wiki/ECMAScript
+
+## Structure de projet
+Dans src, créer des dossiers "containers" et "components" qui représenteront respectivement des composants STATEFUL (typiquement des class avec state) 
+et STATELESS (des functions, pour simple affichage)
