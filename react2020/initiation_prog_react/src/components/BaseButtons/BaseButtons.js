@@ -4,24 +4,24 @@ import classes from './BaseButtons.module.css';
 
 class BaseButtons extends Component {
 
-    wrongWay() {
+    wrongWayHandler() {
         console.log(this); // this = undefined
     }
 
-    rightWay = () => {
+    rightWayHandler = () => {
         console.log(this); // this = Accès à l'application
     }
 
-    rightWay2() {
+    rightWay2Handler() {
         console.log(this); // this = Accès à l'application (cf. appel méthode fléchée sur le bouton directement)
     }
 
-    passArgs(prenom) {
+    passArgsHandler(prenom) {
         alert("Bonjour " + prenom);
         console.log(this); // this = Accès à l'application (cf. appel méthode fléchée sur le bouton directement)
     }
 
-    retrieveEvent(event) {
+    retrieveEventHandler(event) {
         console.log(event);
         console.log(event.target);
     }
@@ -35,23 +35,23 @@ class BaseButtons extends Component {
                     <legend><h3>Les bases des buttons</h3></legend>
                     <fieldset>
                         <legend>Button, et appel &agrave; this</legend>
-                        <button onClick={this.wrongWay}>Why you must use fonction fl&eacute;ch&eacute;es</button>
+                        <button onClick={this.wrongWayHandler}>Why you must use fonction fl&eacute;ch&eacute;es</button>
                         <br />
-                        <button onClick={this.rightWay}>Correct use of fonction fl&eacute;ch&eacute;es</button>
+                        <button onClick={this.rightWayHandler}>Correct use of fonction fl&eacute;ch&eacute;es</button>
                         <br />
-                        <button onClick={() => this.rightWay2()}>Another correct use of fonction fl&eacute;ch&eacute;es</button>
+                        <button onClick={() => this.rightWay2Handler()}>Another correct use of fonction fl&eacute;ch&eacute;es</button>
                     </fieldset>
 
                     <fieldset>
                         <legend>Button, et passer des arguments</legend>
-                        <button onClick={() => this.passArgs("Jonathan")}>Avec argument : Bonjour Jonathan</button>
+                        <button onClick={() => this.passArgsHandler("Jonathan")}>Avec argument : Bonjour Jonathan</button>
                         <br />
-                        <button onClick={this.passArgs.bind(this, "Catherine")}>Utilisation de .bind : Bonjour Catherine</button>
+                        <button onClick={this.passArgsHandler.bind(this, "Catherine")}>Utilisation de .bind : Bonjour Catherine</button>
                     </fieldset>
 
                     <fieldset>
                         <legend>Button : r&eacute;cup&eacute;rer l'event de click</legend>
-                        <button onClick={(event) => this.retrieveEvent(event)}>Retrieve l'event du blick button</button>
+                        <button onClick={(event) => this.retrieveEventHandler(event)}>Retrieve l'event du blick button</button>
                     </fieldset>
                 </fieldset>
             </>
