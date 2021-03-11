@@ -71,16 +71,38 @@ export default app;
 class App extends Component {
     state = {
         personnesAsFunction: [
-            { nom: "Leah", age: "7", sexe: false },
+            { nom: "Leah", age: 7, sexe: false },
         ],
         personnesAsClass: [
-            { nom: "Jonathan", age: "37", sexe: true },
-            { nom: "Catherine", age: "22", sexe: false },
+            { nom: "Jonathan", age: 37, sexe: true },
+            { nom: "Catherine", age: 22, sexe: false },
         ]
     }
 
-    anniversaireHandler() {
-        console.log("Anniversaire");
+    anniversaireHandler = () => {
+        // On DOIT respecer l'immutabilité (https://fr.reactjs.org/tutorial/tutorial.html#why-immutability-is-important) : ne pas modifier les infos directement
+
+        /*
+        const newPersonnes = this.state.personnesAsClass.slice();
+        // <=> const newPersonnes = [...this.state.personnesAsClass]; // Version ES6 ou ES7
+
+        for (let i = 0; i < newPersonnes.length; i++) {
+            newPersonnes[i].age++;
+        }
+        */
+        const newPersonnes = this.state.personnesAsClass.map(personne => {
+            return {
+                nom: personne.nom,
+                age: personne.age + 1,
+                sexe: personne.sexe
+            }
+        });
+
+        // Vérification de l'immutabilité
+        console.log(this.state.personnesAsClass, newPersonnes);
+
+        this.setState({ personnesAsClass: newPersonnes });
+        // <=> this.setState(newPersonnes);
     }
 
     /*

@@ -17,6 +17,7 @@ https://www.udemy.com/course/react-2020-par-la-pratique-de-a-a-z-evolution-progr
 # Notes : 
 - React favorise la GRANULARITE (mise en place d'un niveau de GRANULARITE important) pour permettre la réutilisation des composants en divers endroits 
 - Cycle de vie de REACT : https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+- Why immutability is important ? : https://fr.reactjs.org/tutorial/tutorial.html#why-immutability-is-important
 
 # Structure de projet
 Dans src, créer des dossiers "containers" et "components" qui représenteront respectivement des composants STATEFUL (typiquement des class avec state) 
