@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'; // Besoin d'importer la librairie React pour utiliser du code JSX
 
-import Personne_as_Function from './Personne';
-import Personne_as_Class from './Personne_as_Class';
+import PersonneAsFunction from './Personne';
+import PersonneAsClass from './Personne_as_Class';
 
 import Horloge from './Horloge';
 
@@ -71,10 +71,10 @@ class App extends Component {
                 <h1>Hello World from Component App</h1>
                 <p>using Fragment System</p>
 
-                <Personne_as_Function nom="Jonathan" age="37" sexe="homme"/>
-                <Personne_as_Function nom="Catherine" age="22" sexe="femme"/>
+                <PersonneAsFunction nom="Jonathan" age="37" sexe="homme"/>
+                <PersonneAsFunction nom="Catherine" age="22" sexe="femme"/>
 
-                <Personne_as_Class nom="Leah" age="7" sexe="femme" />
+                <PersonneAsClass nom="Leah" age="7" sexe="femme" />
 
                 <Horloge />
             </>
