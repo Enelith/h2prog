@@ -7,6 +7,8 @@ import PersonneAsClass from './components/Personne/PersonneAsClass';
 
 import Horloge from './containers/Horloge/Horloge';
 
+import BaseButtons from './components/BaseButtons/BaseButtons';
+
 /*
 // Cette fonction app est un composant (on utilise des minuscules habituellement pour des fonctions)
 function app() {
@@ -77,6 +79,10 @@ class App extends Component {
         ]
     }
 
+    anniversaireHandler() {
+        console.log("Anniversaire");
+    }
+
     /*
      * Pour envoyer toutes les props vers un component, utiliser {...this.state.xxx};
      * Pour n'envoyer que des propriétés bien spécifiques, il va falloir définir ces dernières manuellement (ex: nom={this.state.personnesAsFunction[0].nom})
@@ -87,6 +93,8 @@ class App extends Component {
                 <h1>Hello World from Component App</h1>
                 <p>using Fragment System</p>
 
+                <Horloge />
+
                 <PersonneAsFunction 
                     nom={this.state.personnesAsFunction[0].nom}
                     age={this.state.personnesAsFunction[0].age}
@@ -95,7 +103,9 @@ class App extends Component {
                 <PersonneAsClass {...this.state.personnesAsClass[0]} />
                 <PersonneAsClass {...this.state.personnesAsClass[1]} />
 
-                <Horloge />
+                <button onClick={this.anniversaireHandler}>Anniversaire</button>
+
+                <BaseButtons />
             </>
         );
     }
