@@ -21,15 +21,32 @@ class Horloge extends Component {
 
     state = {
         date: new Date(),
+        compteur: 1
+    }
+
+    tick = () => {
+        // ATTENTION : 
+        // setState est une méthode asynchrone, on peut mettre à jour une valeur d'un state à partir d'une précédente valeur, mais on est pas sûr de l'ordre d'execution
+        // => REACT indique que pour modifier une valeur d'un state à partir d'une précédente valeur, il va falloir passer par une fonction qui va modifier le state 
+        /*
+        this.setState({
+            date: new Date(),
+            compteur: this.state.compteur + 1
+        });
+        */
+        // Solution : 
+        this.setState((oldState, props) => {
+            return {
+                date: new Date(),
+                compteur: oldState.compteur + 1
+            }
+        });
     }
 
     componentDidMount() {
         // console.log("Composant monté"); // Rendu en 3rd
-
         this.timerID = setInterval(
-            () => {
-                this.setState({ date: new Date() });
-            },
+            () => this.tick(),
             1000
         );
     }
@@ -44,6 +61,7 @@ class Horloge extends Component {
         return (
             <>
                 <h2>Horloge : {this.state.date.toLocaleTimeString()}</h2>
+                <div>Compteur : {this.state.compteur}</div>
             </>
         )
     }
