@@ -1,0 +1,12 @@
+/*
+    CSS Spécifique dédié uniquement à l'importateur 
+    (ici, PersonneAsClass.js via : import classes from "./PersonneAsClass.module.css")
+*/
+.monTitre {
+    background-color: lightblue;
+    color: black;
+}
+
+.italic {
+    font-style: italic;
+}

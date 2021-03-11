@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import AgePersonne from './AgePersonne/AgePersonne';
 
-class Personne_as_Class extends Component {
+import classes from './PersonneAsClass.module.css';
+
+class PersonneAsClass extends Component {
     // Deux manières de transmettre des informations à une classe (ancienne et nouvelle, depuis ES7)
 
     /*
@@ -14,17 +16,23 @@ class Personne_as_Class extends Component {
 
     // Avec la nouvelle méthode (depuis ES7), plus besoin de déclarer le constructeur, il faut "juste" précéder les props de "this."
     render() {
+        const cssDynamique = {
+            backgroundColor: 'blueviolet',
+            color: "white"
+        }
+        cssDynamique.fontSize = "1.2rem";
+
         return (
             <>
                 <fieldset>
                     <legend>Composant "personne" (as Class) called within "app" Composant (ES6)</legend>
-                    <h4>Personne : {this.props.nom}</h4>
+                    <h4 className={classes.monTitre + " monTitre"}>Personne : {this.props.nom}</h4>
                     <AgePersonne age={this.props.age} />
-                    <div>Sexe : {this.props.sexe}</div>
+                    <div className={classes.monTitre + " " + classes.italic} style = { cssDynamique } > Sexe : {this.props.sexe} (utilisation CSS dynamique via "style" ~ voir le code - WARNING : CamelCase required)</div>
                 </fieldset>
             </>    
         );
     }
 }
 
-export default Personne_as_Class;
+export default PersonneAsClass;

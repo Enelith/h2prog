@@ -1,0 +1,11 @@
+/*
+    CSS Spécifique dédié uniquement à l'importateur 
+    (ici, Horloge.js via : import classes from "./Horloge.module.css")
+*/
+.monTitre {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: lightgreen;
+    color: black;
+    padding: 8px;
+    border-radius: 10px;
+}

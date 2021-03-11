@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import classes from './Horloge.module.css';
+
 /* 
  * Principe : 
  * Initialiser un timer dans la méthode componentDidMount() qui va alors appeller la méthode setState() (qui elle-même va automatiquement appeller la méthode render()), 
@@ -60,7 +62,7 @@ class Horloge extends Component {
         // console.log("Composant affiché"); // Rendu en 2nd
         return (
             <>
-                <h2>Horloge : {this.state.date.toLocaleTimeString()}</h2>
+                <h2 className={classes.monTitre}>Horloge : {this.state.date.toLocaleTimeString()}</h2>
                 <div>Compteur : {this.state.compteur}</div>
             </>
         )
