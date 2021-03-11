@@ -5,6 +5,8 @@ import './App.css';
 import PersonneAsFunction from './components/Personne/Personne';
 import PersonneAsClass from './components/Personne/PersonneAsClass';
 
+import AgePersonne from './components/Personne/AgePersonne/AgePersonne';
+
 import Horloge from './containers/Horloge/Horloge';
 
 import BaseButtons from './components/BaseButtons/BaseButtons';
@@ -76,6 +78,7 @@ class App extends Component {
         personnesAsClass: [
             { nom: "Jonathan", age: 37, sexe: true },
             { nom: "Catherine", age: 22, sexe: false },
+            { nom: "Leah", age: 7, sexe: false },
         ]
     }
 
@@ -142,7 +145,14 @@ class App extends Component {
                     sexe={this.state.personnesAsFunction[0].sexe} />
 
                 <PersonneAsClass {...this.state.personnesAsClass[0]} birthdayHandler={this.birthdayHandler.bind(this, 0)}/>
-                <PersonneAsClass {...this.state.personnesAsClass[1]} birthdayHandler={() => this.birthdayHandler(1)}/>
+                <PersonneAsClass {...this.state.personnesAsClass[1]} birthdayHandler={() => this.birthdayHandler(1)} >
+                    <fieldset>
+                        <legend>Transmis en CHILDREN</legend>
+                        <p >Ma couleur pr&eacute;f&eacute;r&eacute;e est le ORANGE (ceci sera r&eacute;cup&eacute;r&eacute; dans le composant via les props (.children)</p>
+                        <AgePersonne age={this.state.personnesAsClass[1].age} /> <i>(juste pour l'exemple : requiert alors d'importer le component AgePersonne dans App.js)</i>
+                    </fieldset>
+                </PersonneAsClass>
+                <PersonneAsClass {...this.state.personnesAsClass[2]} birthdayHandler={() => this.birthdayHandler(2)} />
 
                 <button onClick={this.anniversaireHandler}>Happy Birthday Everyone !</button>
 

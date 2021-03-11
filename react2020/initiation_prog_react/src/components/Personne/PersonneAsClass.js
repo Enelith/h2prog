@@ -40,6 +40,7 @@ class PersonneAsClass extends Component {
                 <fieldset>
                     <legend>Composant "personne" (as Class) called within "app" Composant (ES6)</legend>
                     <h4 className={classes.monTitre + " monTitre"}>Personne : {this.props.nom}</h4>
+                    {this.props.children}
                     <AgePersonne age={this.props.age} />
                     <div className={classes.monTitre + " " + classes.italic} style={cssDynamique} >
                         Sexe : {affichageSexe} (utilisation CSS dynamique via "style" ~ voir le code - WARNING : CamelCase required)
