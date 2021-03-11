@@ -17,10 +17,23 @@ class PersonneAsClass extends Component {
     // Avec la nouvelle méthode (depuis ES7), plus besoin de déclarer le constructeur, il faut "juste" précéder les props de "this."
     render() {
         const cssDynamique = {
-            backgroundColor: 'blueviolet',
-            color: "white"
+            backgroundColor: 'lightpink',
+            color: "black",
+            padding: "4px"
         }
         cssDynamique.fontSize = "1.2rem";
+
+        if (this.props.sexe) {
+            cssDynamique.backgroundColor = "orange";
+        }
+
+        /*
+        let affichageSexe = "Homme";
+        if (!this.props.sexe) {
+            affichageSexe = "Femme";
+        }
+        */
+        let affichageSexe = this.props.sexe ? "Homme" : "Femme";
 
         return (
             <>
@@ -28,7 +41,9 @@ class PersonneAsClass extends Component {
                     <legend>Composant "personne" (as Class) called within "app" Composant (ES6)</legend>
                     <h4 className={classes.monTitre + " monTitre"}>Personne : {this.props.nom}</h4>
                     <AgePersonne age={this.props.age} />
-                    <div className={classes.monTitre + " " + classes.italic} style = { cssDynamique } > Sexe : {this.props.sexe} (utilisation CSS dynamique via "style" ~ voir le code - WARNING : CamelCase required)</div>
+                    <div className={classes.monTitre + " " + classes.italic} style={cssDynamique} >
+                        Sexe : {affichageSexe} (utilisation CSS dynamique via "style" ~ voir le code - WARNING : CamelCase required)
+                    </div>
                 </fieldset>
             </>    
         );

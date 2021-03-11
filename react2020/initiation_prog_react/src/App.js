@@ -67,16 +67,33 @@ export default app;
 // Pour définir un Component à partir d'une classe, cette dernière doit étendre React.Component, et obligatoirement
 // définir la méthode render() (qui return du code JSX)
 class App extends Component {
+    state = {
+        personnesAsFunction: [
+            { nom: "Leah", age: "7", sexe: false },
+        ],
+        personnesAsClass: [
+            { nom: "Jonathan", age: "37", sexe: true },
+            { nom: "Catherine", age: "22", sexe: false },
+        ]
+    }
+
+    /*
+     * Pour envoyer toutes les props vers un component, utiliser {...this.state.xxx};
+     * Pour n'envoyer que des propriétés bien spécifiques, il va falloir définir ces dernières manuellement (ex: nom={this.state.personnesAsFunction[0].nom})
+     */
     render() {
         return (
             <>
                 <h1>Hello World from Component App</h1>
                 <p>using Fragment System</p>
 
-                <PersonneAsFunction nom="Jonathan" age="37" sexe="homme"/>
-                <PersonneAsFunction nom="Catherine" age="22" sexe="femme"/>
+                <PersonneAsFunction 
+                    nom={this.state.personnesAsFunction[0].nom}
+                    age={this.state.personnesAsFunction[0].age}
+                    sexe={this.state.personnesAsFunction[0].sexe} />
 
-                <PersonneAsClass nom="Leah" age="7" sexe="femme" />
+                <PersonneAsClass {...this.state.personnesAsClass[0]} />
+                <PersonneAsClass {...this.state.personnesAsClass[1]} />
 
                 <Horloge />
             </>

@@ -27,7 +27,7 @@ const personne = props => {
                 <legend>Composant "personne" (as function) called within "app" Composant (ES6)</legend>
                 <h4 className="monTitre">Personne : {props.nom}</h4>
                 <div>Age : {props.age}</div>
-                <div>Sexe : {props.sexe}</div>
+                <div>Sexe : {props.sexe ? "Homme" : "Femme"}</div>
             </fieldset>
         </>
     );
