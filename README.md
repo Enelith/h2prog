@@ -16,6 +16,9 @@ https://bootswatch.com/
 ## ESX (ECMAScript X)
 Check : https://fr.wikipedia.org/wiki/ECMAScript
 
+# Visual Studio et Snippets
+https://docs.microsoft.com/fr-fr/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2019
+
 # Cours : REACT 2020
 https://www.udemy.com/course/react-2020-par-la-pratique-de-a-a-z-evolution-progressive/
 
