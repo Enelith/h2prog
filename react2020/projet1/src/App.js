@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 
 import './App.css';
 
+import TitreH1 from './components/Titres/TitreH1';
+
 class App extends Component {
     render() {
         return (
             <>
                 <div className="container">
-                    <h1>Titre</h1>
+                    <TitreH1>Page listant les livres</TitreH1>
                     <div>Livres</div>
                     <button>Ajouter</button>
                 </div>
