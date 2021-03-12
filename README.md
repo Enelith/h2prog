@@ -21,4 +21,20 @@ https://www.udemy.com/course/react-2020-par-la-pratique-de-a-a-z-evolution-progr
 
 # Structure de projet
 Dans src, créer des dossiers "containers" et "components" qui représenteront respectivement des composants STATEFUL (typiquement des class avec state) 
-et STATELESS (des functions, pour simple affichage)
+et STATELESS (des functions, pour simple affichage).
+Le dossier "asset" contiendra l'ensemble des assets de l'application (ex : images, ...)
+
+# React.Fragment
+https://fr.reactjs.org/docs/fragments.html
+En React, il est courant pour un composant de renvoyer plusieurs éléments. 
+Les fragments nous permettent de grouper une liste d’enfants sans ajouter de nœud supplémentaire au DOM.
+
+# React.StrictMode
+https://fr.reactjs.org/docs/strict-mode.html
+StrictMode est un outil pour détecter les problèmes potentiels d’une application. Tout comme Fragment, StrictMode n’affiche rien. 
+Il active des vérifications et avertissements supplémentaires pour ses descendants.
+
+REMARQUE :
+Les vérifications du mode strict sont effectuées uniquement durant le développement. Elles n’impactent pas la version utilisée en production.
+
+
