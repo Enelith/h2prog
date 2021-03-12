@@ -76,9 +76,9 @@ class App extends Component {
             { nom: "Leah", age: 7, sexe: false },
         ],
         personnesAsClass: [
-            { nom: "Jonathan", age: 37, sexe: true },
-            { nom: "Catherine", age: 22, sexe: false },
-            { nom: "Leah", age: 7, sexe: false },
+            { id: 1, nom: "Jonathan", age: 37, sexe: true },
+            { id: 3, nom: "Catherine", age: 22, sexe: false },
+            { id: 7, nom: "Leah", age: 7, sexe: false },
         ]
     }
 
@@ -96,6 +96,7 @@ class App extends Component {
         */
         const newPersonnes = this.state.personnesAsClass.map(personne => {
             return {
+                id: personne.id, 
                 nom: personne.nom,
                 age: personne.age + 1,
                 sexe: personne.sexe
@@ -112,7 +113,27 @@ class App extends Component {
     /*
      * Note : Respect de l'immutabilité à tous les niveaux
      */
+    /*
     birthdayHandler = (indicePersonne) => {
+        // Génère une copie de la personne sur laquelle on a cliqué (NOUVELLE personne)
+        const newPersonne = { ...this.state.personnesAsClass[indicePersonne] };
+        // Augmente l'âge de la personne copiée
+        newPersonne.age++;
+
+        // On duplique le tableau de personnes original (NOUVEAU tableau)
+        const newTabPersonnes = [...this.state.personnesAsClass];
+        // On remplace la personne à l'indice du tableau sur lequel on a cliqué par la NOUVELLE personne qu'on a créée
+        newTabPersonnes[indicePersonne] = newPersonne;
+
+        // On remplace dans le STATE le tableau de personnesAsClass par le NOUVEAU tableau 
+        this.setState({ personnesAsClass: newTabPersonnes });
+    }
+    */
+    birthdayHandler = (idPersonne) => {
+        const indicePersonne = this.state.personnesAsClass.findIndex(personne => {
+            return personne.id === idPersonne;
+        });
+
         // Génère une copie de la personne sur laquelle on a cliqué (NOUVELLE personne)
         const newPersonne = { ...this.state.personnesAsClass[indicePersonne] };
         // Augmente l'âge de la personne copiée
@@ -161,9 +182,9 @@ class App extends Component {
                 <h2>Affichage via liste</h2>
 
                 {
-                    this.state.personnesAsClass.map((personne, index) => {
+                    this.state.personnesAsClass.map((personne) => {
                         return (
-                            <PersonneAsClass {...personne} birthdayHandler={() => this.birthdayHandler(index)} >
+                            <PersonneAsClass key={personne.id } {...personne} birthdayHandler={() => this.birthdayHandler(personne.id)} >
                                 <AgePersonne age={personne.age} /> (Transmis en CHILDREN)
                             </PersonneAsClass>    
                         );
