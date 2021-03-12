@@ -1,0 +1,10 @@
+.policeTitre {
+    color: white;
+    font-family: 'Sigmar One', cursive;
+
+    cursor: default;
+}
+
+.policeTitre:hover {
+    color: orange;
+}
