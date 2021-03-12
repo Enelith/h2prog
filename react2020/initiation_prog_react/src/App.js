@@ -156,6 +156,20 @@ class App extends Component {
 
                 <button onClick={this.anniversaireHandler}>Happy Birthday Everyone !</button>
 
+                <hr />
+
+                <h2>Affichage via liste</h2>
+
+                {
+                    this.state.personnesAsClass.map((personne, index) => {
+                        return (
+                            <PersonneAsClass {...personne} birthdayHandler={() => this.birthdayHandler(index)} >
+                                <AgePersonne age={personne.age} /> (Transmis en CHILDREN)
+                            </PersonneAsClass>    
+                        );
+                    })
+                }
+
                 <BaseButtons />
             </>
         );
