@@ -4,6 +4,7 @@ import './App.css';
 
 import TitreH1 from './components/Titres/TitreH1';
 import Bouton from './components/Boutons/Bouton';
+import Livres from './containers/Livres/Livres';
 
 class App extends Component {
     render() {
@@ -11,15 +12,9 @@ class App extends Component {
             <>
                 <div className="container">
                     <TitreH1>Page listant les livres</TitreH1>
-                    <div>Livres</div>
-                    <Bouton typeBtn="btn-success" buttonAction={() => console.log("Ajout")}>
+                    <Livres />
+                    <Bouton typeBtn="btn-success" css="w-100" buttonAction={() => console.log("Ajout")}>
                         Ajouter
-                    </Bouton>
-                    <Bouton typeBtn="btn-warning" buttonAction={() => console.log("Modifier")}>
-                        Modifier
-                    </Bouton>
-                    <Bouton typeBtn="btn-danger" buttonAction={() => console.log("Supprimer")}>
-                        Supprimer
                     </Bouton>
                 </div>
             </>
