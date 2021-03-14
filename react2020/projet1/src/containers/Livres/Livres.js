@@ -15,6 +15,17 @@ class Livres extends Component {
         ]
     }
 
+    deleteLivreHandler = (idLivre) => {
+        const livreIndex = this.state.livres.findIndex(livre => {
+            return livre.id === idLivre;
+        });
+
+        const newLivres = [...this.state.livres]; //this.state.livres.slice();
+        newLivres.splice(livreIndex, 1);
+
+        this.setState({ livres: newLivres });
+    }
+
     render() {
         return (
             <>
@@ -32,7 +43,7 @@ class Livres extends Component {
                             this.state.livres.map(livre => {
                                 return (
                                     <tr key={livre.id}>
-                                        <Livre {...livre} />
+                                        <Livre {...livre} deleteHandler={() => this.deleteLivreHandler(livre.id)} />
                                     </tr>
                                 );
                             })

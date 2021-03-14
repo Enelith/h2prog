@@ -14,7 +14,7 @@ const livre = (props) => (
                 </Bouton>
                 </td>
                 <td>
-                    <Bouton typeBtn="btn-danger" buttonAction={() => console.log("Supprimer")}>
+                    <Bouton typeBtn="btn-danger" buttonAction={props.deleteHandler}>
                         Supprimer
                 </Bouton>
                 </td>
