@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import Bouton from '../../components/Boutons/Bouton';
-
+import Livre from './Livre/Livre';
 /*
 import classes from './Livres.module.css';
 */
@@ -32,20 +31,8 @@ class Livres extends Component {
                         {
                             this.state.livres.map(livre => {
                                 return (
-                                    <tr key={ livre.id }>
-                                        <td>{ livre.titre }</td>
-                                        <td>{ livre.auteur }</td>
-                                        <td>{ livre.nbPages }</td>
-                                        <td>
-                                            <Bouton typeBtn="btn-warning" buttonAction={() => console.log("Modifier")}>
-                                                Modification
-                                            </Bouton>
-                                        </td>
-                                        <td>
-                                            <Bouton typeBtn="btn-danger" buttonAction={() => console.log("Supprimer")}>
-                                                Supprimer
-                                            </Bouton>
-                                        </td>
+                                    <tr key={livre.id}>
+                                        <Livre {...livre} />
                                     </tr>
                                 );
                             })
