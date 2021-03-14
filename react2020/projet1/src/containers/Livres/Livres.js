@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-import Livre from './Livre/Livre';
 /*
 import classes from './Livres.module.css';
 */
+
+import Livre from './Livre/Livre';
+import FormulaireAjout from './FormulaireAjout/FormulaireAjout';
 
 class Livres extends Component {
     state = {
@@ -50,6 +52,11 @@ class Livres extends Component {
                         }
                     </tbody>
                 </table>
+
+                {
+                    this.props.ajoutLivre && <FormulaireAjout />
+                    /* <=> this.props.ajoutLivre ? <FormulaireAjout /> : null  */
+                }
             </>
         );
     }
