@@ -14,7 +14,8 @@ class Livres extends Component {
             { id: 2, titre: "Bouquin 2", auteur: "Beta", nbPages: 52 },
             { id: 3, titre: "Bouquin 3", auteur: "Gamma", nbPages: 353 },
             { id: 4, titre: "Bouquin 4", auteur: "Kappa", nbPages: 120 },
-        ]
+        ],
+        lastIdLivre: 4
     }
 
     deleteLivreHandler = (idLivre) => {
@@ -29,7 +30,27 @@ class Livres extends Component {
     }
 
     ajoutLivreHandler = (titre, auteur, nbPages) => {
-        console.log(titre, auteur, nbPages);
+        // Warning : validité / unicité de l'ID livre non assuré par ce process, mais vu que c'est uniquement à titre d'exemple...
+        const newLivre = {
+            id: this.state.lastIdLivre + 1,
+            titre: titre,
+            auteur: auteur,
+            nbPages: nbPages
+        };
+
+        const newListeLivres = [...this.state.livres];
+        newListeLivres.push(newLivre);
+
+        /*
+        // On a pas besoin des props ici, donc autant passer directement à oldState
+        this.setState((oldState, props) => {
+        */
+        this.setState(oldState => {
+            return {
+                livres: newListeLivres,
+                lastIdLivre: oldState.lastIdLivre + 1
+            }
+        });
     }
 
     render() {
