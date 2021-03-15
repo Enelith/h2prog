@@ -28,6 +28,10 @@ class Livres extends Component {
         this.setState({ livres: newLivres });
     }
 
+    ajoutLivreHandler = (titre, auteur, nbPages) => {
+        console.log(titre, auteur, nbPages);
+    }
+
     render() {
         return (
             <>
@@ -54,7 +58,7 @@ class Livres extends Component {
                 </table>
 
                 {
-                    this.props.ajoutLivre && <FormulaireAjout />
+                    this.props.ajoutLivre && <FormulaireAjout validation={this.ajoutLivreHandler} />
                     /* <=> this.props.ajoutLivre ? <FormulaireAjout /> : null  */
                 }
             </>

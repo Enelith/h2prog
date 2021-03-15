@@ -8,6 +8,16 @@ class FormulaireAjout extends Component {
         nbPagesSaisi: ""
     }
 
+    validationFormHandler = (event) => {
+        event.preventDefault();
+
+        this.props.validation(
+            this.state.titreSaisi,
+            this.state.auteurSaisi,
+            this.state.nbPagesSaisi
+        );
+    }
+
     render() {
         return (
             <>
@@ -40,7 +50,7 @@ class FormulaireAjout extends Component {
                             onChange={(event) => this.setState({ nbPagesSaisi: event.target.value })}
                         />
                     </div>
-                    <Bouton typeBtn="btn-primary">Valider</Bouton>
+                    <Bouton typeBtn="btn-primary" buttonAction={this.validationFormHandler} > Valider</Bouton>
                 </form>
             </>
         );
