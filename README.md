@@ -47,4 +47,7 @@ Il active des vérifications et avertissements supplémentaires pour ses descendan
 REMARQUE :
 Les vérifications du mode strict sont effectuées uniquement durant le développement. Elles n’impactent pas la version utilisée en production.
 
+# Encodage caractères
+https://outils-javascript.aliasdmc.fr/encodage-caracteres-accentues/encode-caractere-00E9-html-css-js-autre.html
+
 
