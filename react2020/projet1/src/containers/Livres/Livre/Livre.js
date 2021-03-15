@@ -5,19 +5,19 @@ import Bouton from '../../../components/Boutons/Bouton';
 const livre = (props) => (
     (
         <>
-                <td>{props.titre}</td>
-                <td>{props.auteur}</td>
-                <td>{props.nbPages}</td>
-                <td>
-                    <Bouton typeBtn="btn-warning" buttonAction={() => console.log("Modifier")}>
-                        Modification
+            <td>{props.titre}</td>
+            <td>{props.auteur}</td>
+            <td>{props.nbPages}</td>
+            <td>
+                <Bouton typeBtn="btn-warning" buttonAction={props.modifyHandler}>
+                    Modification
                 </Bouton>
-                </td>
-                <td>
-                    <Bouton typeBtn="btn-danger" buttonAction={props.deleteHandler}>
-                        Supprimer
+            </td>
+            <td>
+                <Bouton typeBtn="btn-danger" buttonAction={props.deleteHandler}>
+                    Supprimer
                 </Bouton>
-                </td>
+            </td>
         </>
     )
 );

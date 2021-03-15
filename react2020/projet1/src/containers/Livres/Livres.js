@@ -6,6 +6,7 @@ import classes from './Livres.module.css';
 
 import Livre from './Livre/Livre';
 import FormulaireAjout from './FormulaireAjout/FormulaireAjout';
+import FormulaireModification from './FormulaireModification/FormulaireModification';
 
 class Livres extends Component {
     state = {
@@ -15,7 +16,8 @@ class Livres extends Component {
             { id: 3, titre: "Bouquin 3", auteur: "Gamma", nbPages: 353 },
             { id: 4, titre: "Bouquin 4", auteur: "Kappa", nbPages: 120 },
         ],
-        lastIdLivre: 4
+        lastIdLivre: 4,
+        idLivreAModifier: 0
     }
 
     deleteLivreHandler = (idLivre) => {
@@ -55,6 +57,31 @@ class Livres extends Component {
         this.props.fermerAjoutLivre();
     }
 
+    modificationLivreHandler = (id, titre, auteur, nbPages) => {
+        const indexLivre = this.state.livres.findIndex(livre => {
+            return livre.id === id;
+        });
+
+        const newLivre = { id, titre, auteur, nbPages };
+        /*
+        // <=> Parce que les noms des parametres de variable sont les mêmes que les noms des champs de l'objet généré (ici, livre)
+        const newLivre = {
+            id: id,
+            titre: titre,
+            auteur: auteur,
+            nbPages: nbPages
+        }
+        */
+
+        const newListe = [...this.state.livres];
+        newListe[indexLivre] = newLivre;
+
+        this.setState({
+            livres: newListe,
+            idLivreAModifier: 0
+        });
+    }
+
     render() {
         return (
             <>
@@ -70,11 +97,23 @@ class Livres extends Component {
                     <tbody>
                         {
                             this.state.livres.map(livre => {
-                                return (
-                                    <tr key={livre.id}>
-                                        <Livre {...livre} deleteHandler={() => this.deleteLivreHandler(livre.id)} />
-                                    </tr>
-                                );
+                                if (livre.id !== this.state.idLivreAModifier) {
+                                    return (
+                                        <tr key={livre.id}>
+                                            <Livre {...livre}
+                                                deleteHandler={() => this.deleteLivreHandler(livre.id)}
+                                                modifyHandler={() => this.setState({ idLivreAModifier: livre.id })}
+                                            />
+                                        </tr>
+                                    );
+                                }
+                                else {
+                                    return (
+                                        <tr key={livre.id}>
+                                            <FormulaireModification {...livre} modification={this.modificationLivreHandler} />
+                                        </tr>
+                                    );
+                                }
                             })
                         }
                     </tbody>
