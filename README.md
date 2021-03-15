@@ -50,4 +50,11 @@ Les vérifications du mode strict sont effectuées uniquement durant le développem
 # Encodage caractères
 https://outils-javascript.aliasdmc.fr/encodage-caracteres-accentues/encode-caractere-00E9-html-css-js-autre.html
 
+# Module : FORMIK
+Permet de gérer la validation des données
+npm install --save formik
+http://jaredpalmer.com/formik
+http://jaredpalmer.com/formik/docs/api/withFormik
+
+# Module YUP
 

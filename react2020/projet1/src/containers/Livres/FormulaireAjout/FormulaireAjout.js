@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import Bouton from '../../../components/Boutons/Bouton';
+import { withFormik } from 'formik';
 
 class FormulaireAjout extends Component {
+    /*
+    // Le STATE n'est plus obligatoire à partir du moment où on intègre FORMIK (Part 057), cf. bas de page, mapPropsToValues ...
     state = {
         titreSaisi: "",
         auteurSaisi: "",
         nbPagesSaisi: ""
     }
 
+    // .. ce qui impacte aussi cette méthode vu qu'on a alors plus de STATE
+    // Ce traitement va être réalisé dans la partie handleSubmit
     validationFormHandler = (event) => {
         event.preventDefault();
 
@@ -25,6 +30,9 @@ class FormulaireAjout extends Component {
         });
     }
 
+    // => Le bouton de validation va devoit être modifié et appeler la partie handleSubmit de withFormik (cf Bas de page)
+    */
+
     render() {
         return (
             <>
@@ -35,8 +43,11 @@ class FormulaireAjout extends Component {
                         <input type="text"
                             className="form-control"
                             id="titre"
-                            value={this.state.titreSaisi}
-                            onChange={(event) => this.setState({ titreSaisi: event.target.value })}
+                            name="titre" // IMPORTANT : doit avoir la même valeur que les params de la partie withFormik > mapPropsToValues
+                            // value={this.state.titreSaisi}
+                            // onChange={(event) => this.setState({ titreSaisi: event.target.value })}
+                            value={this.props.values.titre} // Changement de comportement via Formik
+                            onChange={this.props.handleChange} // Changement de comportement lié à Formik ~ la fonction handleChange est fournie grâce à ce dernier
                         />
                     </div>
                     <div className="mb-3">
@@ -44,8 +55,11 @@ class FormulaireAjout extends Component {
                         <input type="text"
                             className="form-control"
                             id="auteur"
-                            value={this.state.auteurSaisi}
-                            onChange={(event) => this.setState({ auteurSaisi: event.target.value })}
+                            name="auteur"
+                            // value={this.state.auteurSaisi}
+                            // onChange={(event) => this.setState({ auteurSaisi: event.target.value })}
+                            value={this.props.values.auteur} // Changement de comportement via Formik
+                            onChange={this.props.handleChange}
                         />
                     </div>
                     <div className="mb-3">
@@ -53,15 +67,45 @@ class FormulaireAjout extends Component {
                         <input type="number"
                             className="form-control"
                             id="nbPages"
-                            value={this.state.nbPagesSaisi}
-                            onChange={(event) => this.setState({ nbPagesSaisi: event.target.value })}
+                            name="nbPages"
+                            // value={this.state.nbPagesSaisi}
+                            // onChange={(event) => this.setState({ nbPagesSaisi: event.target.value })}
+                            value={this.props.values.nbPages} // Changement de comportement via Formik
+                            onChange={this.props.handleChange}
                         />
                     </div>
+                    {/* 
                     <Bouton typeBtn="btn-primary" buttonAction={this.validationFormHandler} > Valider</Bouton>
+                    */}
+                    <Bouton typeBtn="btn-primary" buttonAction={this.props.handleSubmit} > Valider</Bouton>{/* buttonAction : Référence à withFormik, partie handleSubmit */} 
                 </form>
             </>
         );
     }
 }
 
-export default FormulaireAjout;
+// withFormik requiert 3 parties à renseigner en terme d'argument pour utiliser ce système de validation
+// http://jaredpalmer.com/formik/docs/api/withFormik
+export default withFormik({
+    mapPropsToValues: () => ({
+        // Fonction : réalise la liaison entre les valeurs qu'on aura sur nos inputs, et les données qu'utilisera FORMIK
+        // Part 057 :
+        titre: '',
+        auteur: '',
+        nbPages: ''
+    }),
+    validate: () => {
+        // Fonction : permet de lancer les actions de validation. Cette partie validate récupèrera des values (des tous les inputs)
+    },
+    handleSubmit: (values, { props }) => {
+        // Fonction : permet de lancer les actions à la soumission du formulaire (cette partie sera liée à notre Bouton)
+        // Demande deux arguments : les valeurs, et  les props (pour lesquelles on utilisera la syntaxe de DESTRUCTURATION d'objet {})
+        console.log(values);
+
+        props.validation(
+            values.titre,
+            values.auteur,
+            values.nbPages
+        );
+    }
+})(FormulaireAjout);
