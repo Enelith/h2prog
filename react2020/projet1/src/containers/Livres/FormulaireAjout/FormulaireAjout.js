@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Bouton from '../../../components/Boutons/Bouton';
 import { withFormik } from 'formik';
+import * as Yup from 'yup';
 
 class FormulaireAjout extends Component {
     /*
@@ -75,7 +76,10 @@ class FormulaireAjout extends Component {
                             // value={this.state.nbPagesSaisi}
                             // onChange={(event) => this.setState({ nbPagesSaisi: event.target.value })}
                             value={this.props.values.nbPages} // Changement de comportement via Formik
-                            onChange={this.props.handleChange}
+                            // Précision renforcée : 
+                            // Pour utiliser la fonction Yup.number(), on doit convertir la valeur en INTEGER (via/grâce à Formik), autrement, c'est considéré comme un String
+                            // Pour rappel, on peut convertir une String via parseInt(), ou plus simplement préfixer de "+"
+                            onChange={(event) => this.props.setFieldValue('nbPages', +event.target.value)}
                             onBlur={this.props.handleBlur}
                         />
                         {this.props.errors.nbPages && this.props.touched.nbPages && <span style={{ color: "red" }}>{this.props.errors.nbPages}</span>}
@@ -91,7 +95,7 @@ class FormulaireAjout extends Component {
     }
 }
 
-// withFormik requiert 3 parties à renseigner en terme d'argument pour utiliser ce système de validation
+// withFormik requiert 3 parties à renseigner en terme d'argument pour utiliser ce système de validation : mapPropsToValues, validate (si non Yup), et handleSubmit
 // http://jaredpalmer.com/formik/docs/api/withFormik
 export default withFormik({
     mapPropsToValues: () => ({
@@ -101,6 +105,8 @@ export default withFormik({
         auteur: '',
         nbPages: ''
     }),
+    /*
+    // Code version sans le module Yup
     validate: (values) => {
         // Fonction : permet de lancer les actions de validation. Cette partie validate récupèrera des values (des tous les inputs)
         const errors = {};
@@ -115,6 +121,24 @@ export default withFormik({
         }
         return errors;
     },
+    */
+    // Code version avec Yup : à la place de validate, on passera par un SCHEMA ~ Formik dispose d'une méthode validationSchema
+    validationSchema: Yup.object().shape(
+        // Génération du schéma dans un objet (ce dernier va récupérer plusieurs propriétés qui sont sur l'ensemble des champs)
+        {
+            titre: Yup.string()
+                .min(3, "Le titre doit avoir plus de 3 caract\u00e8res")
+                .max(15, "Le titre doit avoir moins de 15 carat\u00e8res")
+                .required("Le titre est obligatoire"),
+            auteur: Yup.string()
+                .min(3, "L'auteur doit avoir plus de 3 caract\u00e8res")
+                .required("L'auteur est obligatoire"),
+            nbPages: Yup.number()
+                .lessThan(1000, "Nombre de pages doit \u00eatre inf\u00e9rieur \u00e0 1000 pages")
+                .moreThan(50, "Nombre de pages doit \u00eatre sup\u00e9rieur \u00e0 50 pages")
+
+        }
+    ),
     handleSubmit: (values, { props }) => {
         // Fonction : permet de lancer les actions à la soumission du formulaire (cette partie sera liée à notre Bouton)
         // Demande deux arguments : les valeurs, et  les props (pour lesquelles on utilisera la syntaxe de DESTRUCTURATION d'objet {})

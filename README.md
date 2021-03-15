@@ -57,4 +57,9 @@ http://jaredpalmer.com/formik
 http://jaredpalmer.com/formik/docs/api/withFormik
 
 # Module YUP
+Yup is a JavaScript schema builder for value parsing and validation. Define a schema, transform a value to match, validate the shape of an existing value, 
+or both. 
+Yup schema are extremely expressive and allow modeling complex, interdependent validations, or value transformations.
 
+npm install --save yup
+https://github.com/jquense/yup
