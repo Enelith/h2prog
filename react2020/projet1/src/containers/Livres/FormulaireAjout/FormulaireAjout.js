@@ -48,7 +48,9 @@ class FormulaireAjout extends Component {
                             // onChange={(event) => this.setState({ titreSaisi: event.target.value })}
                             value={this.props.values.titre} // Changement de comportement via Formik
                             onChange={this.props.handleChange} // Changement de comportement lié à Formik ~ la fonction handleChange est fournie grâce à ce dernier
+                            onBlur={this.props.handleBlur}
                         />
+                        {this.props.errors.titre && this.props.touched.titre && <span style={{ color: "red" }}>{this.props.errors.titre}</span>}
                     </div>
                     <div className="mb-3">
                         <label htmlFor="auteur" className="form-label">Auteur</label>
@@ -60,7 +62,9 @@ class FormulaireAjout extends Component {
                             // onChange={(event) => this.setState({ auteurSaisi: event.target.value })}
                             value={this.props.values.auteur} // Changement de comportement via Formik
                             onChange={this.props.handleChange}
+                            onBlur={this.props.handleBlur}
                         />
+                        {this.props.errors.auteur && this.props.touched.auteur && <span style={{ color: "red" }}>{this.props.errors.auteur}</span>}
                     </div>
                     <div className="mb-3">
                         <label htmlFor="nbPages" className="form-label">Nombre de pages</label>
@@ -72,12 +76,15 @@ class FormulaireAjout extends Component {
                             // onChange={(event) => this.setState({ nbPagesSaisi: event.target.value })}
                             value={this.props.values.nbPages} // Changement de comportement via Formik
                             onChange={this.props.handleChange}
+                            onBlur={this.props.handleBlur}
                         />
+                        {this.props.errors.nbPages && this.props.touched.nbPages && <span style={{ color: "red" }}>{this.props.errors.nbPages}</span>}
                     </div>
                     {/* 
                     <Bouton typeBtn="btn-primary" buttonAction={this.validationFormHandler} > Valider</Bouton>
                     */}
-                    <Bouton typeBtn="btn-primary" buttonAction={this.props.handleSubmit} > Valider</Bouton>{/* buttonAction : Référence à withFormik, partie handleSubmit */} 
+                    <Bouton typeBtn="btn-primary" buttonAction={this.props.handleSubmit} > Valider</Bouton>{/* buttonAction : Référence à withFormik, partie handleSubmit */}
+                    <Bouton typeBtn="btn-danger" buttonAction={this.props.handleReset} > Reset</Bouton>{/* buttonAction : Référence à withFormik, partie handleSubmit */} 
                 </form>
             </>
         );
@@ -94,8 +101,19 @@ export default withFormik({
         auteur: '',
         nbPages: ''
     }),
-    validate: () => {
+    validate: (values) => {
         // Fonction : permet de lancer les actions de validation. Cette partie validate récupèrera des values (des tous les inputs)
+        const errors = {};
+        if (values.titre.length < 3) {
+            errors.titre = "Le titre doit avoir plus de 3 caract\u00e8res";
+        }
+        if (values.titre.length > 15) {
+            errors.titre = "Le titre doit avoir moins de 15 carat\u00e8res";
+        }
+        if (!values.auteur) {
+            errors.auteur = "Le champs Auteur est obligatoire";
+        }
+        return errors;
     },
     handleSubmit: (values, { props }) => {
         // Fonction : permet de lancer les actions à la soumission du formulaire (cette partie sera liée à notre Bouton)
