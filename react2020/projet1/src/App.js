@@ -24,7 +24,7 @@ class App extends Component {
             <>
                 <div className="container">
                     <TitreH1>Page listant les livres</TitreH1>
-                    <Livres ajoutLivre={this.state.ajoutLivre} />
+                    <Livres ajoutLivre={this.state.ajoutLivre} fermerAjoutLivre={() => this.setState({ ajoutLivre: false })} />
                     <Bouton typeBtn="btn-success" css="w-100" buttonAction={this.clickAjoutLivreHandler}>
                         {!this.state.ajoutLivre ? "Ajouter" : "Fermer l'ajout"}
                     </Bouton>

@@ -16,6 +16,13 @@ class FormulaireAjout extends Component {
             this.state.auteurSaisi,
             this.state.nbPagesSaisi
         );
+
+        // Reset le formulaire
+        this.setState({
+            titreSaisi: "",
+            auteurSaisi: "",
+            nbPagesSaisi: ""
+        });
     }
 
     render() {
