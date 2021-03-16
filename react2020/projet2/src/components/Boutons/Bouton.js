@@ -1,7 +1,9 @@
 import React from 'react';
 
+import classes from './Bouton.module.css';
+
 const bouton = (props) => {
-    const btnCss = `btn ${props.typeBtn} ${props.css}`;
+    const btnCss = `btn ${classes.button} ${props.typeBtn} ${props.css}`;
 
     return (
         <button
