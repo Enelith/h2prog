@@ -31,8 +31,10 @@ const armes = (props) => (
                         break;
                 }
 				return (
-					<div key={index} className="col">
-                        <Arme imageArme={imageArme} >
+                    <div key={index} className="col">
+                        <Arme imageArme={imageArme}
+                            isCurrentArme={props.currentArme === arme}
+                            clic={() => props.changeArme(arme)}>
 							{arme}
 						</Arme>
 					</div>

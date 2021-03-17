@@ -12,7 +12,8 @@ class CreateurPersonnage extends Component {
             image: 1,
             force: 0,
             agilite: 0,
-            intelligence: 0
+            intelligence: 0,
+            arme: null
         },
         nbPointsDisponibles: 7,
         armes: ["epee", "fleau", "arc", "hache"]
@@ -66,6 +67,12 @@ class CreateurPersonnage extends Component {
         });
     }
 
+    changeArmeHandler = (arme) => {
+        const newPersonnage = { ...this.state.personnage };
+        newPersonnage.arme = arme;
+        this.setState({ personnage: newPersonnage });
+    }
+
     render() {
         return (
             <>
@@ -80,8 +87,10 @@ class CreateurPersonnage extends Component {
                         enleverPoint={this.enleverPointHandler}
                         ajouterPoint={this.ajouterPointHandler}
                     />
-                    <Armes listeArmes={this.state.armes} />
-
+                    <Armes listeArmes={this.state.armes}
+                        changeArme={this.changeArmeHandler}
+                        currentArme={this.state.personnage.arme}
+                    />
                     <div className="row no-gutters">
                         <Bouton
                             typeBtn="btn-danger"

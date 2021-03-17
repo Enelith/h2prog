@@ -4,7 +4,15 @@ const arme = (props) => {
 
     return (
         <>
-            <img src={props.imageArme} alt='' />
+            <img
+                style={{
+                    opacity: props.isCurrentArme ? "1" : "0.5",
+                    cursor: "pointer"
+                }}
+                src={props.imageArme}
+                alt={props.children}
+                onClick={props.clic}
+            />
             <p className="text-center">{props.children}</p>
         </>
     );
