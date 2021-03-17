@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Carac from './Carac/Carac';
+
 const caracPerso = (props) => (
     <>
         <div>
@@ -9,9 +11,9 @@ const caracPerso = (props) => (
             </span>
         </div>
         <div>
-            Force : {props.force}<br />
-            Agilit&eacute; : {props.agilite}<br />
-            Intelligence : {props.intelligence}
+            <Carac nbPoints={props.force} >Force</Carac>
+            <Carac nbPoints={props.agilite} >Agilit&eacute;</Carac>
+            <Carac nbPoints={props.intelligence} >Intelligence</Carac>
         </div>
     </>
 );
