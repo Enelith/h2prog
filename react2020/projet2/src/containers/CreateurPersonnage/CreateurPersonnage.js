@@ -16,13 +16,33 @@ class CreateurPersonnage extends Component {
         }
     }
 
+    imagePrecedenteHandler = () => {
+        this.setState(oldState => {
+            const newPersonnage = { ...oldState.personnage };
+            newPersonnage.image = (oldState.personnage.image <= 1 ? 3 : oldState.personnage.image - 1);
+            return { personnage: newPersonnage };
+        });
+    }
+
+    imageSuivanteHandler = () => {
+        this.setState(oldState => {
+            const newPersonnage = { ...oldState.personnage };
+            newPersonnage.image = (oldState.personnage.image >= 3 ? 1 : oldState.personnage.image + 1);
+            return { personnage: newPersonnage };
+        });
+    }
+
     render() {
         return (
             <>
                 <div className="container">
                     <TitreH1 >Cr&eacute;ateur de personnage</TitreH1>
 
-                    <Personnage {...this.state.personnage} />
+                    <Personnage
+                        {...this.state.personnage}
+                        precedente={this.imagePrecedenteHandler}
+                        suivante={this.imageSuivanteHandler}
+                    />
                     <Armes />
 
                     <div className="row no-gutters">

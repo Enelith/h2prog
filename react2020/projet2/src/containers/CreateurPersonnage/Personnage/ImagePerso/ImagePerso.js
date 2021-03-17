@@ -20,13 +20,11 @@ const imagePerso = (props) => {
 
     return (
         <div className="row no-gutters text-center align-items-center">
-            <div className={["col-1", classes.fleche, classes.gauche].join(' ')}>
-            </div>
+            <div className={["col-1", classes.fleche, classes.gauche].join(' ')} onClick={props.flecheGauche}></div>
             <div className="col">
                 <img src={imageToDisplay} alt='' />
             </div>
-            <div className={["col-1", classes.fleche, classes.droite].join(' ')}>
-            </div>
+            <div className={["col-1", classes.fleche, classes.droite].join(' ')} onClick={props.flecheDroite}></div>
         </div>
     );
 };
