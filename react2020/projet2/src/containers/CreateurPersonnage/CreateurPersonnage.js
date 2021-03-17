@@ -73,6 +73,24 @@ class CreateurPersonnage extends Component {
         this.setState({ personnage: newPersonnage });
     }
 
+    reinitialisationHandler = () => {
+        this.setState({
+            personnage: {
+                image: 1,
+                force: 0,
+                agilite: 0,
+                intelligence: 0,
+                arme: null
+            },
+            nbPointsDisponibles: 7,
+            armes: ["epee", "fleau", "arc", "hache"]
+        });
+    }
+
+    validationHandler = () => {
+        alert("Personnage cr\u00E9e");
+    }
+
     render() {
         return (
             <>
@@ -95,13 +113,13 @@ class CreateurPersonnage extends Component {
                         <Bouton
                             typeBtn="btn-danger"
                             css="col-6"
-                            buttonAction={() => console.log("R\u00e9initialiser")}>
+                            buttonAction={this.reinitialisationHandler}>
                             R&eacute;initialiser
                         </Bouton>
                         <Bouton
                             typeBtn="btn-success"
                             css="col-6"
-                            buttonAction={() => console.log("Cr\u00e9er")}>
+                            buttonAction={this.validationHandler}>
                             Cr&eacute;er
                         </Bouton>
                     </div>
