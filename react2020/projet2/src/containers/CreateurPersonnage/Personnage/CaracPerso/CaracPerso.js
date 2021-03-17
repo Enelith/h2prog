@@ -11,9 +11,24 @@ const caracPerso = (props) => (
             </span>
         </div>
         <div>
-            <Carac nbPoints={props.force} >Force</Carac>
-            <Carac nbPoints={props.agilite} >Agilit&eacute;</Carac>
-            <Carac nbPoints={props.intelligence} >Intelligence</Carac>
+            <Carac
+                nbPoints={props.force}
+                moins={() => props.enleverPoint('force')}
+                plus={() => props.ajouterPoint('force')}>
+                Force
+            </Carac>
+            <Carac
+                nbPoints={props.agilite}
+                moins={() => props.enleverPoint('agilite')}
+                plus={() => props.ajouterPoint('agilite')}>
+                Agilit&eacute;
+            </Carac>
+            <Carac
+                nbPoints={props.intelligence}
+                moins={() => props.enleverPoint('intelligence')}
+                plus={() => props.ajouterPoint('intelligence')}>
+                Intelligence
+            </Carac>
         </div>
     </>
 );

@@ -10,9 +10,9 @@ class CreateurPersonnage extends Component {
     state = {
         personnage : {
             image: 1,
-            force: 2,
-            agilite: 3,
-            intelligence: 1
+            force: 0,
+            agilite: 0,
+            intelligence: 0
         },
         nbPointsDisponibles: 7
     }
@@ -33,6 +33,38 @@ class CreateurPersonnage extends Component {
         });
     }
 
+    enleverPointHandler = (carac) => {
+        this.setState(oldState => {
+            if (oldState.personnage[carac] <= 0) return null; // Min 0 dans les caracs
+            const newPointCarac = oldState.personnage[carac] - 1;
+            const newPersonnage = { ...oldState.personnage };
+            const newNbPointsDisponibles = oldState.nbPointsDisponibles + 1;
+
+            newPersonnage[carac] = newPointCarac;
+
+            return {
+                personnage: newPersonnage,
+                nbPointsDisponibles: newNbPointsDisponibles
+            }
+        });
+    }
+
+    ajouterPointHandler = (carac) => {
+        this.setState(oldState => {
+            if (oldState.personnage[carac] >= 5 || oldState.nbPointsDisponibles <= 0) return null; // Max 5 dans les caracs
+            const newPointCarac = oldState.personnage[carac] + 1;
+            const newPersonnage = { ...oldState.personnage };
+            const newNbPointsDisponibles = oldState.nbPointsDisponibles - 1;
+
+            newPersonnage[carac] = newPointCarac;
+
+            return {
+                personnage: newPersonnage,
+                nbPointsDisponibles: newNbPointsDisponibles
+            }
+        });
+    }
+
     render() {
         return (
             <>
@@ -44,6 +76,8 @@ class CreateurPersonnage extends Component {
                         precedente={this.imagePrecedenteHandler}
                         suivante={this.imageSuivanteHandler}
                         nbPointsDisponibles={this.state.nbPointsDisponibles}
+                        enleverPoint={this.enleverPointHandler}
+                        ajouterPoint={this.ajouterPointHandler}
                     />
                     <Armes />
 
