@@ -14,14 +14,14 @@ const carac = (props) => {
             <div className="col-4">
                 {props.children} :
             </div>
-                <div className="col">
-                    <div className="row no-gutters">
-                        <div className={[classes.signe, classes.moins].join(' ')} onClick={props.moins}></div>
-                        {carre}
-                        <div className={[classes.signe, classes.plus].join(' ')} onClick={props.plus}></div>
-                    </div>
+            <div className="col">
+                <div className="row no-gutters">
+                    <div className={[classes.signe, classes.moins].join(' ')} onClick={props.moins}></div>
+                    {carre}
+                    <div className={[classes.signe, classes.plus].join(' ')} onClick={props.plus}></div>
                 </div>
             </div>
+        </div>
     );
 };
 
