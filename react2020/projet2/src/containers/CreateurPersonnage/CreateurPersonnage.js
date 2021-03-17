@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import TitreH1 from '../../components/Titres/TitreH1';
-import Armes from '../../components/Armes/Armes';
 import Bouton from '../../components/Boutons/Bouton';
 
 import Personnage from './Personnage/Personnage';
+import Armes from './Armes/Armes';
 
 class CreateurPersonnage extends Component {
     state = {
@@ -14,7 +14,8 @@ class CreateurPersonnage extends Component {
             agilite: 0,
             intelligence: 0
         },
-        nbPointsDisponibles: 7
+        nbPointsDisponibles: 7,
+        armes: ["epee", "fleau", "arc", "hache"]
     }
 
     imagePrecedenteHandler = () => {
@@ -79,7 +80,7 @@ class CreateurPersonnage extends Component {
                         enleverPoint={this.enleverPointHandler}
                         ajouterPoint={this.ajouterPointHandler}
                     />
-                    <Armes />
+                    <Armes listeArmes={this.state.armes} />
 
                     <div className="row no-gutters">
                         <Bouton
