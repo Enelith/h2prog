@@ -1,5 +1,6 @@
 import React from 'react';
 
+import CaracPerso from './CaracPerso/CaracPerso';
 import ImagePerso from './ImagePerso/ImagePerso';
 
 const personnage = (props) => (
@@ -12,9 +13,12 @@ const personnage = (props) => (
             />
         </div>
         <div className="col-6">
-            Force: {props.force}<br />
-            Agilit&eacute;: {props.agilite}<br />
-            Intelligence: {props.intelligence}
+            <CaracPerso
+                nbPointsDisponibles={props.nbPointsDisponibles}
+                force={props.force}
+                agilite={props.agilite}
+                intelligence={props.intelligence}
+            />
         </div>
     </div>
 );
