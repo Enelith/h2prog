@@ -6,6 +6,8 @@ import Bouton from '../../components/Boutons/Bouton';
 import Personnage from './Personnage/Personnage';
 import Armes from './Armes/Armes';
 
+import axios from 'axios';
+
 class CreateurPersonnage extends Component {
     state = {
         personnage : {
@@ -16,7 +18,25 @@ class CreateurPersonnage extends Component {
             arme: null
         },
         nbPointsDisponibles: 7,
-        armes: ["epee", "fleau", "arc", "hache"]
+        armes: null, // ["epee", "fleau", "arc", "hache"] // On va récupérer ces valeurs directement depuis Firebase, via Axios
+        loading: false
+    }
+
+    componentDidMount = () => {
+        this.setState({ loading: true });
+        // Axios utilise le systeme des promesses
+        axios.get("https://jvi-react-proj2-creaperso-default-rtdb.firebaseio.com/armes.json")
+            .then(response => {
+                console.log(response);
+                // const armesArray = Object.keys(response.data); // Converti les keys de l'objet response.data en tableau
+                const armesArray = Object.values(response.data); // Converti les valeurs de l'objet response.data en tableau
+                // const armesArray = Object.entries(response.data); // Converti les paires de l'objet response.data en tableau
+                this.setState({ armes: armesArray, loading: false });
+            })
+            .catch(error => {
+                console.log(error);
+                this.setState({ loading: false });
+            })
     }
 
     imagePrecedenteHandler = () => {
@@ -105,10 +125,16 @@ class CreateurPersonnage extends Component {
                         enleverPoint={this.enleverPointHandler}
                         ajouterPoint={this.ajouterPointHandler}
                     />
-                    <Armes listeArmes={this.state.armes}
-                        changeArme={this.changeArmeHandler}
-                        currentArme={this.state.personnage.arme}
-                    />
+                    {
+                        this.state.armes &&
+                        <Armes listeArmes={this.state.armes}
+                            changeArme={this.changeArmeHandler}
+                            currentArme={this.state.personnage.arme}
+                        />
+                    }
+                    {
+                        this.state.loading && <div>Loading...</div>
+                    }
                     <div className="row no-gutters">
                         <Bouton
                             typeBtn="btn-danger"
