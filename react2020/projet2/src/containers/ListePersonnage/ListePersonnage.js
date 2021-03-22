@@ -9,7 +9,7 @@ class ListePersonnage extends Component {
         loading: false
     }
 
-    componentDidMount = () => {
+    loadData = () => {
         this.setState({ loading: true });
 
         axios.get('https://jvi-react-proj2-creaperso-default-rtdb.firebaseio.com/persos.json')
@@ -25,6 +25,17 @@ class ListePersonnage extends Component {
                 console.log(error);
                 this.setState({ loading: false });
             })
+    }
+
+    componentDidMount = () => {
+        this.loadData();
+    }
+
+    // Methode called quand le state > refresh de App est mis à jour
+    componentDidUpdate = (oldProps, oldState) => {
+        if (oldProps.refresh !== this.props.refresh) {
+            this.loadData();
+        }
     }
 
     render() {

@@ -5,11 +5,21 @@ import CreateurPersonnage from './containers/CreateurPersonnage/CreateurPersonna
 import ListePersonnage from './containers/ListePersonnage/ListePersonnage';
 
 class App extends Component {
+    state = {
+        refresh: false
+    }
+
+    refreshHandler = () => {
+        this.setState((oldState, oldProps) => {
+            return { refresh: !oldState.refresh }
+        });
+    }
+
     render() {
         return (
             <>
-                <CreateurPersonnage />
-                <ListePersonnage />
+                <CreateurPersonnage refresh={this.refreshHandler} />
+                <ListePersonnage refresh={this.state.refresh} />
             </>
         );
     }

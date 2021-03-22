@@ -122,6 +122,8 @@ class CreateurPersonnage extends Component {
                 console.log(response);
                 this.setState({ loading: false });
                 this.reinitialisationHandler();
+
+                this.props.refresh();
             })
             .catch(error => {
                 console.log(error);
