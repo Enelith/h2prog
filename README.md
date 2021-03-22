@@ -73,5 +73,14 @@ https://bennettfeely.com/scales/
 # Webpack
 https://webpack.js.org/configuration/
 
+# Webpack > Loading path & files
+https://webpack.js.org/loaders/file-loader/
+https://webpack.js.org/configuration/resolve/
+
 # Axios
 https://github.com/axios/axios
+npm install --save axios
+
+# Environment Files
+https://create-react-app.dev/docs/adding-custom-environment-variables/
+https://medium.com/@tacomanator/environments-with-create-react-app-7b645312c09d
