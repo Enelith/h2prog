@@ -19,7 +19,8 @@ class CreateurPersonnage extends Component {
         },
         nbPointsDisponibles: 7,
         armes: null, // ["epee", "fleau", "arc", "hache"] // On va récupérer ces valeurs directement depuis Firebase, via Axios
-        loading: false
+        loading: false,
+        nom: ''
     }
 
     componentDidMount = () => {
@@ -103,12 +104,30 @@ class CreateurPersonnage extends Component {
                 arme: null
             },
             nbPointsDisponibles: 7,
-            armes: ["epee", "fleau", "arc", "hache"]
+            armes: ["epee", "fleau", "arc", "hache"],
+            nom: ''
         });
     }
 
     validationHandler = () => {
-        alert("Personnage cr\u00E9e");
+        const player = {
+            perso: { ...this.state.personnage },
+            nom: this.state.nom
+        }
+
+        this.setState({ loading: true });
+
+        axios.post("https://jvi-react-proj2-creaperso-default-rtdb.firebaseio.com/persos.json", player)
+            .then(response => {
+                console.log(response);
+                this.setState({ loading: false });
+                this.reinitialisationHandler();
+            })
+            .catch(error => {
+                console.log(error);
+                this.setState({ loading: false });
+                this.reinitialisationHandler();
+            })
     }
 
     render() {
@@ -116,6 +135,17 @@ class CreateurPersonnage extends Component {
             <>
                 <div className="container">
                     <TitreH1 >Cr&eacute;ateur de personnage</TitreH1>
+
+                    {
+                        this.state.loading && <div>Loading...</div>
+                    }
+
+                    <div className="form-group">
+                        <label htmlFor="inputName">Nom :</label>
+                        <input type="text" className="form-control" id="inputName"
+                            value={this.state.nom}
+                            onChange={(event) => this.setState({ nom: event.target.value })} />
+                    </div>
 
                     <Personnage
                         {...this.state.personnage}
@@ -131,9 +161,6 @@ class CreateurPersonnage extends Component {
                             changeArme={this.changeArmeHandler}
                             currentArme={this.state.personnage.arme}
                         />
-                    }
-                    {
-                        this.state.loading && <div>Loading...</div>
                     }
                     <div className="row no-gutters">
                         <Bouton
