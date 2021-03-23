@@ -9,7 +9,8 @@ const bouton = (props) => {
         <button
             type="button"
             className={btnCss}
-            onClick={props.buttonAction} >
+            onClick={props.buttonAction}
+            style={props.isSelected ? { opacity: 1 } : {opacity: 0.5}} >
             {props.children}
         </button>
     );

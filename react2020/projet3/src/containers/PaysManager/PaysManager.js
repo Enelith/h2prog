@@ -10,13 +10,27 @@ import Pays from './Pays/Pays';
 class PaysManager extends Component {
     state = {
         listePays: [],
-        loading: false
+        loading: false,
+        regionSelected: null
     }
 
     componentDidMount = () => {
+        this.loadCountries('all');
+    }
+
+    changeRegionHandler = (region) => {
+        this.loadCountries(region);
+    }
+
+    loadCountries = (region) => {
+        let urlTarget = region;
+        if (region !== 'all') {
+            urlTarget = `region/${region}`;
+        }
+
         this.setState({ loading: true });
 
-        axios.get(process.env.REACT_APP_RESTCOUNTRIES_API + 'all')
+        axios.get(`${process.env.REACT_APP_RESTCOUNTRIES_API}${urlTarget}`)
             .then(response => {
                 const listePays = response.data.map(pays => {
                     return {
@@ -29,11 +43,17 @@ class PaysManager extends Component {
                     }
                 });
 
-                this.setState({ listePays, loading: false }); // <=> this.setState({listePays: listePays});
+                this.setState({
+                    listePays,
+                    loading: false,
+                    regionSelected: region
+                }); // <=> this.setState({listePays: listePays});
             })
             .catch(error => {
-                console.log(error);
-                this.setState({ loading: false });
+                this.setState({
+                    loading: false,
+                    regionSelected: region
+                });
             });
     }
 
@@ -43,12 +63,29 @@ class PaysManager extends Component {
                 <div className="container">
                     <Titre >Liste des pays du monde</Titre>
 
-                    <Bouton typeBtn="btn-info">Tous</Bouton>
-                    <Bouton typeBtn="btn-info">Europe</Bouton>
-                    <Bouton typeBtn="btn-info">Afrique</Bouton>
-                    <Bouton typeBtn="btn-info">Asie</Bouton>
-                    <Bouton typeBtn="btn-info">Am&eacute;rique</Bouton>
-                    <Bouton typeBtn="btn-info">Oc&eacute;anie</Bouton>
+                    <Bouton typeBtn="btn-info"
+                        buttonAction={() => this.changeRegionHandler('all')}
+                        isSelected={this.state.regionSelected === 'all'} > Tous</Bouton>
+
+                    <Bouton typeBtn="btn-info"
+                        buttonAction={() => this.changeRegionHandler('europe')}
+                        isSelected={this.state.regionSelected === 'europe'} > Europe</Bouton>
+
+                    <Bouton typeBtn="btn-info"
+                        buttonAction={() => this.changeRegionHandler('africa')}
+                        isSelected={this.state.regionSelected === 'africa'} >Afrique</Bouton>
+
+                    <Bouton typeBtn="btn-info"
+                        buttonAction={() => this.changeRegionHandler('asia')}
+                        isSelected={this.state.regionSelected === 'asia'} >Asie</Bouton>
+
+                    <Bouton typeBtn="btn-info"
+                        buttonAction={() => this.changeRegionHandler('americas')}
+                        isSelected={this.state.regionSelected === 'americas'} >Am&eacute;rique</Bouton>
+
+                    <Bouton typeBtn="btn-info"
+                        buttonAction={() => this.changeRegionHandler('oceania')}
+                        isSelected={this.state.regionSelected === 'oceania'} >Oc&eacute;anie</Bouton>
 
                     {
                         this.state.loading ?
