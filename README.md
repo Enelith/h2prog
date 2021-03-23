@@ -81,6 +81,33 @@ https://webpack.js.org/configuration/resolve/
 https://github.com/axios/axios
 npm install --save axios
 
+# Routage : React-router et react-router-dom.
+Installer react-router-dom installera automatiquement l'autre dépendance (react-router)
+npm install --save react-router-dom
+
+Ces modules vont nous permettre de gérer le routage de nos pages, et de réaliser un site internet entièrement développé avec React.
+Au final, nous aurons un site web qui n'aura qu'une seule page, et plusieurs liens pour activer certains compartiments de celui-ci, et afficher le résultat 
+à l'écran de l'utilisateur.
+
+Le gros avantage de ce type de site est la rapidité d'execution une fois qu'il est chargé.
+En effet, tout le site est renvoyé à l'utilisateur, qui peut ensuite naviguer dedans de manière quasi-instantanée.
+
+## Routage > BrowserRouter
+A <Router> that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL.
+https://reactrouter.com/web/api/BrowserRouter
+
+## Routage > HashRouter
+A <Router> that uses the hash portion of the URL (i.e. window.location.hash) to keep your UI in sync with the URL.
+https://reactrouter.com/web/api/HashRouter
+
+## Routage > Link 
+Provides declarative, accessible navigation around your application.
+https://reactrouter.com/web/api/Link
+
+## Routage > NavLink
+A special version of the <Link> that will add styling attributes to the rendered element when it matches the current URL.
+https://reactrouter.com/web/api/NavLink
+
 # Environment Files
 https://create-react-app.dev/docs/adding-custom-environment-variables/
 https://medium.com/@tacomanator/environments-with-create-react-app-7b645312c09d
