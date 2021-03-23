@@ -49,7 +49,13 @@ class App extends Component{
                     <Route path="/admin" exact children={({ match }) => { return (match ? <NavBarLight /> : <NavBarDark />)}} />
 
                     <Route path="/" exact render={() => (<h1>Page d'accueil</h1>)} />
-                    <Route path="/pays" exact render={() => <PaysManager />} />
+                    <Route path="/pays" exact component={PaysManager} />
+                    <Route path="/pays/:id" render={(props) => {
+                        {/* On peut cumuler les params (ex : /pays/:id/:test => props.match.params.id & props.match.params.test) */}
+                        console.log("App Props for /pays/:id", props);
+                        return (<h1>Page du pays : {props.match.params.id}</h1>)
+                    }} />
+
                     <Route path="/pays/render" exact render={() => <PaysManager />} />
                     <Route path="/pays/component" exact component={PaysManager} />
                     <Route path="/admin" exact render={() => <h1>Page d'admin</h1>} />

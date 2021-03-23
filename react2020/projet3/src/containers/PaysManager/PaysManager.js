@@ -87,7 +87,9 @@ class PaysManager extends Component {
 
             displayListePays = listeReduite.map(pays => {
                 return (
-                    <div key={pays.code} className="col-12 col-md-6 "><Pays {...pays} /></div>
+                    <div key={pays.code} className="col-12 col-md-6 ">
+                        <Pays {...pays} {...this.props} /> {/* Transfert des props contenant toutes les informations du routage au composant Pays */}
+                    </div>
                 );
             })
         }
