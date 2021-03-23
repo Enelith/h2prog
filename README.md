@@ -100,6 +100,11 @@ https://reactrouter.com/web/api/BrowserRouter
 A <Router> that uses the hash portion of the URL (i.e. window.location.hash) to keep your UI in sync with the URL.
 https://reactrouter.com/web/api/HashRouter
 
+## Routage > Route
+The Route component is perhaps the most important component in React Router to understand and learn to use well. 
+Its most basic responsibility is to render some UI when its path matches the current URL (DISPATCH INTO RENDER / COMPONENT / CHILDREN)
+https://reactrouter.com/web/api/Route
+
 ## Routage > Link 
 Provides declarative, accessible navigation around your application.
 https://reactrouter.com/web/api/Link

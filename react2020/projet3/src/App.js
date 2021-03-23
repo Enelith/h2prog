@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import './App.css';
 
 import PaysManager from './containers/PaysManager/PaysManager';
+import NavBarDark from './components/NavBar/NavBarDark';
+import NavBarLight from './components/NavBar/NavBarLight';
 
 class App extends Component{
 
@@ -37,15 +39,20 @@ class App extends Component{
         return (
             <>
                 <BrowserRouter>
+                    {/*
                     <Link to="/">Page d'accueil</Link>
                     <Link to="/pays">Liste des pays</Link>
                     <Link to="/pays/render">Liste des pays (using RENDER Route property)</Link>
                     <Link to="/pays/component">Liste des pays (using COMPONENT Route property)</Link>
+                    */}
+
+                    <Route path="/admin" exact children={({ match }) => { return (match ? <NavBarLight /> : <NavBarDark />)}} />
 
                     <Route path="/" exact render={() => (<h1>Page d'accueil</h1>)} />
                     <Route path="/pays" exact render={() => <PaysManager />} />
                     <Route path="/pays/render" exact render={() => <PaysManager />} />
                     <Route path="/pays/component" exact component={PaysManager} />
+                    <Route path="/admin" exact render={() => <h1>Page d'admin</h1>} />
                 </BrowserRouter>
             </>
         );
