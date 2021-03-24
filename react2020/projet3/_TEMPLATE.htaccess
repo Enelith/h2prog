@@ -1,0 +1,30 @@
+## Ex fourni pour régler les problèmes de mises en ligne quand on tente de refresh le site et qui renvoie une erreur
+## Il faut simplement indiquer au server que peu importe l'url, il faut automatiquement repointer vers le fichier index.html de notre application 
+## qui fera alors les bonnes redirections 
+
+## Pour PATH_DEFINI, il faut indiquer ce path dans le fichier package.json (à voir pour les environnements ?) en rajoutant l'information "homepage"
+## {
+##   "name": "projet3",
+##   "version": "0.1.0",
+##   "homepage": "www.test.com/lambda" <=	/lambda indique ici un sous domaine, qu'il faudra alors indiquer dans notre BrowserRouter 
+##											via la property "basename" (<BrowserRouter basename="/lambda">)
+##   "private": true,
+##	 ...
+
+## Dans l'exemple ci-dessous, la ligne la plus importante est 
+##		RewriteRule . <PATH_DEFINI>/index.html [L]   
+## Ainsi, si on a défini la homepage par www.test.com/react/app5 et le BrowserRouter par /react/app5 (par exemple), on aurait alors 
+##		RewriteRule . /react/app5/index.html [L]   
+
+## Note : Fichier à placer dans PUBLIC ? Pris en compte lors du BUILD 
+## (via "npm run build" -> va générer un nouveau dossier "build" dans lequel on aura toutes les sources compilées à déposer sur le server)
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /subdirectory
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule . <PATH_DEFINI>/index.html [L]   
+</IfModule>
