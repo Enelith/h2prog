@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 
 import PaysManager from './containers/PaysManager/PaysManager';
+import PaysDetail from './containers/PaysDetail/PaysDetail';
 import NavBarDark from './components/NavBar/NavBarDark';
 import NavBarLight from './components/NavBar/NavBarLight';
 
@@ -50,11 +51,14 @@ class App extends Component{
 
                     <Route path="/" exact render={() => (<h1>Page d'accueil</h1>)} />
                     <Route path="/pays" exact component={PaysManager} />
+                    {/*
                     <Route path="/pays/:id" render={(props) => {
-                        {/* On peut cumuler les params (ex : /pays/:id/:test => props.match.params.id & props.match.params.test) */}
+                        // On peut cumuler les params (ex : /pays/:id/:test => props.match.params.id & props.match.params.test)
                         console.log("App Props for /pays/:id", props);
                         return (<h1>Page du pays : {props.match.params.id}</h1>)
                     }} />
+                    */}
+                    <Route path="/pays/:id" render={(props) => <PaysDetail nomPays={props.match.params.id} {...props}/>} />
 
                     <Route path="/pays/render" exact render={() => <PaysManager />} />
                     <Route path="/pays/component" exact component={PaysManager} />
