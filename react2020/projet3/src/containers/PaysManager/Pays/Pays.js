@@ -67,7 +67,7 @@ class Pays extends Component {
                             </>
                             :
                             <div className="text-right px-3 py-1">
-                                <NavLink to={this.props.match.url + "/" + this.props.nom} className="nav-link">Voir la fiche du pays</NavLink>
+                                <NavLink to={(this.props.match ? this.props.match.url : '/pays') + "/" + this.props.nom} className="nav-link">Voir la fiche du pays</NavLink>
                             </div>
                     }
                 </div>

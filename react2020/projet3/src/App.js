@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 
@@ -7,6 +7,9 @@ import PaysManager from './containers/PaysManager/PaysManager';
 import PaysDetail from './containers/PaysDetail/PaysDetail';
 import NavBarDark from './components/NavBar/NavBarDark';
 import NavBarLight from './components/NavBar/NavBarLight';
+
+import Erreur from './components/Erreur/Erreur';
+import Erreur404 from './components/Erreur/Erreur404/Erreur404';
 
 class App extends Component{
 
@@ -49,20 +52,24 @@ class App extends Component{
 
                     <Route path="/admin" exact children={({ match }) => { return (match ? <NavBarLight /> : <NavBarDark />)}} />
 
-                    <Route path="/" exact render={() => (<h1>Page d'accueil</h1>)} />
-                    <Route path="/pays" exact component={PaysManager} />
-                    {/*
-                    <Route path="/pays/:id" render={(props) => {
-                        // On peut cumuler les params (ex : /pays/:id/:test => props.match.params.id & props.match.params.test)
-                        console.log("App Props for /pays/:id", props);
-                        return (<h1>Page du pays : {props.match.params.id}</h1>)
-                    }} />
-                    */}
-                    <Route path="/pays/:id" render={(props) => <PaysDetail nomPays={props.match.params.id} {...props}/>} />
+                    <Switch> {/* SWITCH permet de n'utiliser QUE la première route trouvée qui match ~ autrement, toutes les routes qui peuvent matcher sont executées */}
+                        <Route path="/" exact render={() => (<h1>Page d'accueil</h1>)} />
+                        <Route path="/pays" exact component={PaysManager} />
+                        <Route path="/pays/render" exact render={() => <PaysManager />} />
+                        <Route path="/pays/component" exact component={PaysManager} />
 
-                    <Route path="/pays/render" exact render={() => <PaysManager />} />
-                    <Route path="/pays/component" exact component={PaysManager} />
-                    <Route path="/admin" exact render={() => <h1>Page d'admin</h1>} />
+                        {/*
+                        <Route path="/pays/:id" render={(props) => {
+                            // On peut cumuler les params (ex : /pays/:id/:test => props.match.params.id & props.match.params.test)
+                            console.log("App Props for /pays/:id", props);
+                            return (<h1>Page du pays : {props.match.params.id}</h1>)
+                        }} />
+                        */}
+                        <Route path={["/pays/:id", "/pays/component/:id"]} exact render={(props) => <PaysDetail nomPays={props.match.params.id} {...props}/>} />
+
+                        <Route path="/admin" exact render={() => <h1>Page d'admin</h1>} />
+                        <Route render={() => <Erreur><Erreur404 /></Erreur>} />
+                    </Switch>
                 </BrowserRouter>
             </>
         );
