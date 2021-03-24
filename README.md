@@ -91,25 +91,26 @@ Au final, nous aurons un site web qui n'aura qu'une seule page, et plusieurs lie
 
 Le gros avantage de ce type de site est la rapidité d'execution une fois qu'il est chargé.
 En effet, tout le site est renvoyé à l'utilisateur, qui peut ensuite naviguer dedans de manière quasi-instantanée.
+https://reactrouter.com/web/guides/quick-start
 
-## Routage > BrowserRouter
+## React-router > BrowserRouter
 A <Router> that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL.
 https://reactrouter.com/web/api/BrowserRouter
 
-## Routage > HashRouter
+## React-router  > HashRouter
 A <Router> that uses the hash portion of the URL (i.e. window.location.hash) to keep your UI in sync with the URL.
 https://reactrouter.com/web/api/HashRouter
 
-## Routage > Route
+## React-router  > Route
 The Route component is perhaps the most important component in React Router to understand and learn to use well. 
 Its most basic responsibility is to render some UI when its path matches the current URL (DISPATCH INTO RENDER / COMPONENT / CHILDREN)
 https://reactrouter.com/web/api/Route
 
-## Routage > Link 
+## React-router  > Link 
 Provides declarative, accessible navigation around your application.
 https://reactrouter.com/web/api/Link
 
-## Routage > NavLink
+## React-router  > NavLink
 A special version of the <Link> that will add styling attributes to the rendered element when it matches the current URL.
 https://reactrouter.com/web/api/NavLink
 
