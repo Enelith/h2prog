@@ -1,0 +1,11 @@
+.active {
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+}
+.activeAccueil {
+    background-color: lightpink;
+}
+.activePays {
+    background-color: green;
+    text-decoration: underline;
+}

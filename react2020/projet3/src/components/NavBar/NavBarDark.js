@@ -19,10 +19,22 @@ const navbar = (props) => (
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <NavLink exact to="/" className="nav-link">Page d'accueil</NavLink>
+                            <NavLink exact
+                                to="/"
+                                className="nav-link"
+                                activeClassName="active activeAccueil"
+                                activeStyle={{
+                                    'textDecoration': 'underline',
+                                    color: 'black'
+                                }}
+                            >Page d'accueil</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink exact to="/pays" className="nav-link">Liste des pays</NavLink>
+                            <NavLink exact
+                                to="/pays"
+                                className="nav-link"
+                                activeClassName="active activePays"
+                            >Liste des pays</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink exact to="/pays/render" className="nav-link">... via RENDER Route property</NavLink>
