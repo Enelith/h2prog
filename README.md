@@ -12,6 +12,9 @@ npm start
 https://create-react-app.dev/docs/adding-bootstrap/
 # Themes for Bootstrap
 https://bootswatch.com/
+# React-bootstrap
+https://react-bootstrap.github.io/
+(npm install --save bootstrap react-bootstrap react-router-bootstrap)
 
 ## ESX (ECMAScript X)
 Check : https://fr.wikipedia.org/wiki/ECMAScript
