@@ -10,6 +10,8 @@ import Button from 'react-bootstrap/Button';
 
 import Select from 'react-select';
 
+import Etablissement from './Etablissement/Etablissement';
+
 class Localisation extends Component {
     state = {
         loading: false,
@@ -38,12 +40,13 @@ class Localisation extends Component {
     }
 
     rechercheEtablissement = (type) => {
+        console.log(this.state.departementSelected);
         console.log(process.env.REACT_APP_API_GOUV_FR_TYPE_BY_DEPARTEMENT + `${this.state.departementSelected}/${type}`);
         axios.get(process.env.REACT_APP_API_GOUV_FR_TYPE_BY_DEPARTEMENT + `${this.state.departementSelected}/${ type }`)
             .then(response => {
                 console.log(response.data);
                 this.setState({
-                    recherche: response.data
+                    recherche: response.data.features
                 })
             })
     }
@@ -71,7 +74,7 @@ class Localisation extends Component {
                                 <Select
                                     options={this.state.departements}
                                     defaultValue={this.state.departements[0]}
-                                    onChange={(target) => this.setState({ departementSelect: target.code })} />
+                                    onChange={(target) => this.setState({ departementSelected: target.value }) } />
                             </Col>
                             <Col sm={8}>
                                 <Button variant="secondary" onClick={() => this.rechercheEtablissement('mairie')} >Mairie</Button>&nbsp;
@@ -79,6 +82,13 @@ class Localisation extends Component {
                                 <Button variant="secondary" onClick={() => this.rechercheEtablissement('pole_emploi')} >P&ocirc;le emploi</Button>&nbsp;
                                 <Button variant="secondary" onClick={() => this.rechercheEtablissement('prefecture')} >Pr&eacute;fecture</Button>
                             </Col>
+                        </Row>
+                        <Row>
+                            {
+                                this.state.recherche && this.state.recherche.map((etablissement, index) => {
+                                    return <Col key={index} md={6}><Etablissement {...etablissement} /></Col>
+                                })
+                            }
                         </Row>
                     </div>
                 }
