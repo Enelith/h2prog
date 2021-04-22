@@ -1,5 +1,5 @@
 import React from 'react';
-import Titre from '../UI/Titres/TitreH1';
+import Titre from 'components/UI/Titres/TitreH1';
 
 const route404 = (props) => (
     <>

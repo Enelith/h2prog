@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'react-bootstrap/Image';
 
-import Titre from '../../../components/UI/Titres/TitreH1';
-import imgAccueil from '../../../assets/images/chateau.jpg';
+import Titre from 'components/UI/Titres/TitreH1';
+import imgAccueil from 'assets/images/chateau.jpg';
 
 const accueil = (props) => (
     <>

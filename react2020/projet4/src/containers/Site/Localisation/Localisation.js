@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import Titre from '../../../components/UI/Titres/TitreH1';
+import Titre from 'components/UI/Titres/TitreH1';
 import Button from 'react-bootstrap/Button';
 
 import Select from 'react-select';

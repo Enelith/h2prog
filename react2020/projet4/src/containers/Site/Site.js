@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 
-import NavBar from '../../components/UI/NavBar/NavBar';
-import Route404 from '../../components/Route404/Route404';
-import Footer from '../../components/Footer/Footer';
+import NavBar from 'components/UI/NavBar/NavBar';
+import Route404 from 'components/Route404/Route404';
+import Footer from 'components/Footer/Footer';
 
 import Accueil from './Accueil/Accueil';
 import Contact from './Contact/Contact';

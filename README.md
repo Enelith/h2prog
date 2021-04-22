@@ -80,6 +80,10 @@ https://webpack.js.org/configuration/
 https://webpack.js.org/loaders/file-loader/
 https://webpack.js.org/configuration/resolve/
 
+## REACT APP REWIRED (redefine WEBPACK configs)
+https://github.com/timarney/react-app-rewired
+npm install react-app-rewired --save-dev
+
 # Axios
 https://github.com/axios/axios
 npm install --save axios

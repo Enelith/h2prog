@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import Titre from '../../../components/UI/Titres/TitreH1';
 import Button from 'react-bootstrap/Button';
-import { LinkContainer } from 'react-router-bootstrap';
-import ContactForm from './ContactForm/ContactForm';
 import { Route } from 'react-router-dom';
+
+import { LinkContainer } from 'react-router-bootstrap';
+import Titre from 'components/UI/Titres/TitreH1';
+import ContactForm from './ContactForm/ContactForm';
 
 class Contact extends Component {
     render() {
