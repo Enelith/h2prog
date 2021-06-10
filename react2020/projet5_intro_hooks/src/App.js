@@ -1,9 +1,11 @@
-function App() {
-  return (
-      <div className="App">
+import Test from 'containers/Test/Test';
 
-      </div>
-  );
+function App() {
+    return (
+        <div className="App">
+            <Test />
+        </div>
+    );
 }
 
 export default App;
