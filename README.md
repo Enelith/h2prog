@@ -82,7 +82,22 @@ https://webpack.js.org/configuration/resolve/
 
 ## REACT APP REWIRED (redefine WEBPACK configs)
 https://github.com/timarney/react-app-rewired
-npm install react-app-rewired --save-dev
+1) npm install react-app-rewired --save-dev
+2) Create a config-overrides.js file in the root directory
+3) Package.json : 'Flip' the existing calls to react-scripts in npm scripts for start, build and test
+ie :
+/* package.json */
+  "scripts": {
+-   "start": "react-scripts start",
++   "start": "react-app-rewired start",
+-   "build": "react-scripts build",
++   "build": "react-app-rewired build",
+-   "test": "react-scripts test",
++   "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+}
+Note: Do NOT flip the call for the eject script. That gets run only once for a project, after which you are given full control over the 
+webpack configuration making react-app-rewired no longer required. There are no configuration options to rewire for the eject script.
 
 # Axios
 https://github.com/axios/axios
