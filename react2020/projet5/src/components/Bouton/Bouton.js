@@ -3,7 +3,7 @@ import React from 'react';
 const Bouton = (props) => (
     <>
         <button className="btn btn-outline-secondary"
-            onClick={props.click}
+            onClick={props.clic}
         >
             {props.children}
         </button>
