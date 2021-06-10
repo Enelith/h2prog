@@ -1,19 +1,14 @@
+import { useEffect } from "react";
+
 import TitreH1 from "components/TitreH1/TitreH1";
 import Bouton from "components/Bouton/Bouton";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import useLoadData from "hooks/useLoadData";
 
 function Formations() {
-    const [formations, setFormations] = useState(null);
+    const [formations, loadFormations] = useLoadData();
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_H2PROG_FORMATIONS)
-            .then(response => {
-                setFormations(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
+        loadFormations(process.env.REACT_APP_H2PROG_FORMATIONS);
     }, []);
 
     return (
@@ -26,11 +21,13 @@ function Formations() {
 
             <table className="table">
                 <thead>
-                    <th>Num&eacute;ro</th>
-                    <th>Libell&eacute;</th>
-                    <th>Description</th>
-                    <th>Cat&eacute;gorie</th>
-                    <th>Image</th>
+                    <tr>
+                        <th>Num&eacute;ro</th>
+                        <th>Libell&eacute;</th>
+                        <th>Description</th>
+                        <th>Cat&eacute;gorie</th>
+                        <th>Image</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {
@@ -42,7 +39,7 @@ function Formations() {
                                     <td>{formation.description}</td>
                                     <td>{formation.categorie}</td>
                                     <td>
-                                        <img src={formation.image} alt={formation.image} width="100px"/>
+                                        <img src={formation.image} alt={formation.image} width="100px" />
                                     </td>
                                 </tr>
                             );

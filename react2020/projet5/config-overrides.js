@@ -9,6 +9,7 @@ module.exports = function override(config, env) {
         assets: path.resolve(__dirname, 'src/assets/'),
         components: path.resolve(__dirname, 'src/components/'),
         containers: path.resolve(__dirname, 'src/containers/'),
+        hooks: path.resolve(__dirname, 'src/hooks/'),
     }
 
     return config;
