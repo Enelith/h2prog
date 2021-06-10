@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Test() {
+function Part102UseState() {
     const state = useState(0); // <= En faisant ça, on vient d'enregistrer un nouveau States (donc un nouvel état local) avec une valeur (qui est de 0)
     console.log(state); // useState renvoie un ARRAY contenant 2 informations : [0] => la valeur, [1] => l'équivalent du setState (qui va permettre de modifier cette valeur)
     // Pour récupérer ces valeurs directement, on va passer par le destructuring JS ES6 (ou ES7?)
@@ -23,4 +23,4 @@ function Test() {
     );
 }
 
-export default Test;
+export default Part102UseState;

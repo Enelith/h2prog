@@ -1,9 +1,9 @@
-import Test from 'containers/Test/Test';
+import Part102UseState from 'containers/Part102UseState/Part102UseState';
 
 function App() {
     return (
         <div className="App">
-            <Test />
+            <Part102UseState />
         </div>
     );
 }
