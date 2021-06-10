@@ -139,3 +139,7 @@ https://reactrouter.com/web/api/NavLink
 # Environment Files
 https://create-react-app.dev/docs/adding-custom-environment-variables/
 https://medium.com/@tacomanator/environments-with-create-react-app-7b645312c09d
+
+# Liste des Hooks
+(Check "Section 105 - Custom Hooks.png")
+https://fr.reactjs.org/docs/hooks-reference.html
